@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Match", "Match\Match.csproj", "{7B4EF8EA-822B-4BD5-A233-7D4F4D5E52B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Match_BLL", "Match_BLL\Match_BLL.csproj", "{F3665DBF-4BA4-41A0-A77B-9649D00198D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{7B4EF8EA-822B-4BD5-A233-7D4F4D5E52B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B4EF8EA-822B-4BD5-A233-7D4F4D5E52B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B4EF8EA-822B-4BD5-A233-7D4F4D5E52B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3665DBF-4BA4-41A0-A77B-9649D00198D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3665DBF-4BA4-41A0-A77B-9649D00198D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3665DBF-4BA4-41A0-A77B-9649D00198D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3665DBF-4BA4-41A0-A77B-9649D00198D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89D98B15-5C93-4060-9DD4-BDE84E117084}
 	EndGlobalSection
 EndGlobal

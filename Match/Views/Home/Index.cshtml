@@ -12,55 +12,55 @@
 
     @foreach (string tournament in Model.Select(m => m.Tournament).Distinct())
     {
-        
+
         <div class="row col-md-10 col-md-push-1">
             <div class="text-center">
                 <h4> <strong>@tournament</strong> </h4>
             </div>
-        <table class="table table-hover table-striped " id="schedule-table">
-            <thead>
-                <tr class="success">
-                    <th>#</th>
-                    <th>Time</th>
-                    <th>Home</th>
-                    <th> </th>
-                    <th>Away</th>
-                    <th>1</th>
-                    <th>X</th>
-                    <th>2</th>
-                    <th>1X</th>
-                    <th>12</th>
-                    <th>X2</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{ 
-                    int number = 1;
-                    foreach ( SoccerMatch match in Model.Where( m => m.Tournament == tournament ) )
-                    {
-                    <tr>
-                        <th scope="row"> @number </th>
-                        <td > @match.Time </td>
-                        <td> @match.HomeTeamTitle </td>
-                        <td class=@(match.IsInProgres ? "bg-danger" : "") > - </td> @*@match.Score</td>*@
-                        <td> @match.GuestTeamTitle </td>
-                        <td> @match.Line.Home </td>
-                        <td> @match.Line.Draw </td>
-                        <td> @match.Line.Away </td>
-                        <td> @match.Line.HomeOrDraw </td>
-                        <td> @match.Line.NotDraw </td>
-                        <td> @match.Line.AwayOrDraw </td>
-                        
+            <table class="table table-hover table-striped " id="schedule-table">
+                <thead>
+                    <tr class="success">
+                        <th>#</th>
+                        <th>Time</th>
+                        <th>Home</th>
+                        <th> </th>
+                        <th>Away</th>
+                        <th>1</th>
+                        <th>X</th>
+                        <th>2</th>
+                        <th>1X</th>
+                        <th>12</th>
+                        <th>X2</th>
                     </tr>
-                        number++;
-                        
+                </thead>
+                <tbody>
+                    @{
+                        int number = 1;
+                        foreach (SoccerMatch match in Model.Where(m => m.Tournament == tournament))
+                        {
+                            <tr>
+                                <th scope="row"> @number </th>
+                                <td> @match.Time </td>
+                                <td> @match.HomeTeamTitle </td>
+                                <td class=@(match.IsInProgres ? "bg-danger" : "")> - </td> @*@match.Score</td>*@
+                                <td> @match.GuestTeamTitle </td>
+                                <td> @match.Line.Home </td>
+                                <td> @match.Line.Draw </td>
+                                <td> @match.Line.Away </td>
+                                <td> @match.Line.HomeOrDraw </td>
+                                <td> @match.Line.NotDraw </td>
+                                <td> @match.Line.AwayOrDraw </td>
 
+                            </tr>
+                            number++;
+
+
+                        }
                     }
-                 }
-            </tbody>
-        </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
 
             <hr />
-    }
+                        }
 </div>

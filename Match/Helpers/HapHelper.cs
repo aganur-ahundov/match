@@ -15,16 +15,16 @@ namespace Match.Helpers
                 .Where(n =>
                 !string.IsNullOrEmpty(n.Attributes[attr]?.Value)
                 && n.Attributes[attr].Value.Contains(value))
-                .First();
+                .FirstOrDefault();
         }
 
         public static HtmlNode GetChildNodeByAttribute( HtmlNode parent, string element, string attr, string value)
         {
             return parent.Descendants( element )
                 .Where(n =>
-                !string.IsNullOrEmpty(n.Attributes[attr]?.Value)
-                && n.Attributes[attr].Value.Contains(value))
-                .First();
+                    !string.IsNullOrEmpty(n.Attributes[attr]?.Value)
+                    && n.Attributes[attr].Value.Contains(value))
+                .FirstOrDefault();
         }
 
 

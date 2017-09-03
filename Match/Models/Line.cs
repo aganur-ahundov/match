@@ -21,7 +21,7 @@ namespace Match.Models
 
         public double AwayOrDraw { get; set; }
 
-        public double Total { get; set; }
+        public string Total { get; set; }
 
         public double TotalMore { get; set; }
 
