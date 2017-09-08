@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Match.ParsingCode;
 using System.Web.Mvc;
-using Match.Models;
-using Match.ParsingCode;
 
 namespace Match.Controllers
 {
@@ -12,7 +7,7 @@ namespace Match.Controllers
     {
         public ActionResult Index()
         {
-            return View( XBetParser.GetGames() );
+            return View( XBetParser.GetFootballGames() );
         }
         
     }

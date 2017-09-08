@@ -1,0 +1,23 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+tr.selected {
+    background-color: #00A44C !important;
+    font-weight: bold;
+}
+
+tr.addBetsHead {
+    background-color: #A4474A !important;
+    color: initial;
+}
+
+tr.addBetsValues {
+    background-color: #A4474A !important;
+    color: yellowgreen;
+}
+
+ tr.addBetsValues td{
+     border-bottom: 3px solid black;
+ }

@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cof.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="JsonRoot.cs" />
+    <Compile Include="Enums\BetType.cs" />
+    <Compile Include="Models\Cof.cs" />
+    <Compile Include="Models\Line.cs" />
+    <Compile Include="Models\JsonRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\SportType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
