@@ -12,7 +12,7 @@ namespace Match.Controllers
     {
         public ActionResult Index()
         {
-            return View( XBetParser.GetData() );
+            return View( XBetParser.GetGames() );
         }
         
     }

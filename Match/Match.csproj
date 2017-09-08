@@ -155,13 +155,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\HapHelper.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\SoccerMatch.cs" />
     <Compile Include="ParsingCode\1xbet\LineType.cs" />
     <Compile Include="ParsingCode\1xbet\XBetParser.cs" />
-    <Compile Include="ParsingCode\Footballua\ParserFootballua.cs" />
-    <Compile Include="ParsingCode\MyScore\ParserMyScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
