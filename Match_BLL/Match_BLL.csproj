@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Enums\BetType.cs" />
     <Compile Include="Models\Cof.cs" />
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\JsonRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
