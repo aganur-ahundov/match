@@ -1,0 +1,104 @@
+﻿@using Match_BLL;
+@using Match_BLL.Models;
+@using Match.ParsingCode;
+@using Match_BLL.Helpers;
+@using Match.Helpers;
+
+@model IEnumerable<FilterResultLine>
+
+@foreach (string league in Model.Select(m => m.Line.LeagueTitle).Distinct())
+{
+    <div class="row col-md-10 col-md-push-1">
+        <div class="text-center">
+            <h4> <strong>@league</strong> </h4>
+        </div>
+        <table class="table table-hover table-striped " id="schedule-table">
+            <thead>
+                <tr class="success">
+                    <th>#</th>
+                    <th>Time</th>
+                    <th>Home</th>
+                    <th> </th>
+                    <th>Away</th>
+                    <th>1</th>
+                    <th>X</th>
+                    <th>2</th>
+                    <th>1X</th>
+                    <th>12</th>
+                    <th>X2</th>
+                    <th>
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int number = 1;
+                    foreach (FilterResultLine match in Model.Where(m => m.Line.LeagueTitle == league))
+                    {
+                        <tr class="mainBets">
+                            <th scope="row"> @number </th>
+                            <td> # </td>
+                            <td> @match.Line.HomeTeam </td>
+                            <td> - </td>
+                            <td> @match.Line.AwayTeam </td>
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.Home)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.Draw)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.Away)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.HomeOrDraw)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.NotDraw)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.AwayOrDraw)
+                            <td>
+                                <a data-ajax="true" data-ajax-complete="MarkMatch", class="star-empty" href="@Url.Action("AddMatch", "Home", new { matchID = match.Line.Id })">
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="addBetsHead hidden">
+                            <td>1</td>
+                            <td>Фора</td>
+                            <td>2</td>
+                            <td>Б</td>
+                            <td>Тотал</td>
+                            <td>М</td>
+                            <td>Б</td>
+                            <td>IT1</td>
+                            <td>М</td>
+                            <td>Б</td>
+                            <td>IT2</td>
+                            <td>М</td>
+                        </tr>
+                        <tr class="addBetsValues hidden">
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.HandicapHome)
+                            <td>@(match.Line.GetCof(BetType.HandicapHome)?.AdditionalPoints ?? -1)</td>
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.HandicapAway)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.TotalMore)
+                            <td>@(match.Line.GetCof(BetType.TotalMore)?.AdditionalPoints ?? -1)</td>
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.TotalLess)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.ITHomeMore)
+                            <td>@(match.Line.GetCof(BetType.ITHomeMore)?.AdditionalPoints ?? -1)</td>
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.ITHomeLess)
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.ITAwayMore)
+                            <td>@(match.Line.GetCof(BetType.ITAwayMore)?.AdditionalPoints ?? -1)</td>
+                            @MatchHtmlHelper.RenderCoefValue(match, BetType.ITAwayLess)
+                        </tr>
+                        number++;
+                    }
+                }
+            </tbody>
+        </table>
+        <hr />
+    </div>
+
+                    }
+
+<script>
+    function MarkMatch() {
+        var uncheckedClass = "star-empty";
+        var checkedClass = "star-selected";
+
+        $(this).hasClass(uncheckedClass)
+            ? $(this).removeClass(uncheckedClass).addClass(checkedClass)
+            : $(this).removeClass(checkedClass).addClass(uncheckedClass);
+    }
+</script>

@@ -1,5 +1,11 @@
 ﻿$(document).ready(function () {
+    OnGameLineClick();
+    
+});
 
+
+function OnGameLineClick()
+{
     $("tr.mainBets").click(function () {
         var adds = $(this).next("tr.addBetsHead");
         var addsValues = adds.next("tr.addBetsValues");
@@ -8,4 +14,4 @@
         adds.hasClass("hidden") ? adds.removeClass("hidden") : adds.addClass("hidden");
         addsValues.hasClass("hidden") ? addsValues.removeClass("hidden") : addsValues.addClass("hidden");
     });
-});
+}

@@ -1,91 +1,20 @@
-﻿@using Match_BLL;
-@using Match.ParsingCode;
-@model IEnumerable<Line>
+﻿@using Match_BLL.Models;
+@model IEnumerable<FilterResultLine>
 
 @{
     ViewBag.Title = "Games";
 }
 
 <div class="container">
-    <div class="row col-md-12">
-        <h4>@Model.First().Sport</h4>
-    </div>
-
-    @foreach (string league in Model.Select(m => m.LeagueTitle).Distinct())
-    {
-        <div class="row col-md-10 col-md-push-1">
-            <div class="text-center">
-                <h4> <strong>@league</strong> </h4>
-            </div>
-            <table class="table table-hover table-striped " id="schedule-table">
-                <thead>
-                    <tr class="success">
-                        <th>#</th>
-                        <th>Time</th>
-                        <th>Home</th>
-                        <th> </th>
-                        <th>Away</th>
-                        <th>1</th>
-                        <th>X</th>
-                        <th>2</th>
-                        <th>1X</th>
-                        <th>12</th>
-                        <th>X2</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int number = 1;
-                        foreach (Line match in Model.Where(m => m.LeagueTitle == league))
-                        {
-                            <tr class="mainBets">
-                                <th scope="row"> @number </th>
-                                <td> # </td>
-                                <td> @match.HomeTeam </td>
-                                <td> - </td>
-                                <td> @match.AwayTeam </td>
-                                <td> @(match.GetCof(BetType.Home)?.Value ?? -1)</td>
-                                <td> @(match.GetCof(BetType.Draw)?.Value ?? -1) </td>
-                                <td> @(match.GetCof(BetType.Away)?.Value ?? -1) </td>
-                                <td> @(match.GetCof(BetType.HomeOrDraw)?.Value ?? -1) </td>
-                                <td> @(match.GetCof(BetType.NotDraw)?.Value ?? -1) </td>
-                                <td> @(match.GetCof(BetType.AwayOrDraw)?.Value ?? -1) </td>
-                            </tr>
-                            <tr class="addBetsHead hidden">
-                                <td>1</td>
-                                <td>Фора</td>
-                                <td>2</td>
-                                <td>Б</td>
-                                <td>Тотал</td>
-                                <td>М</td>
-                                <td>Б</td>
-                                <td>IT1</td>
-                                <td>М</td>
-                                <td>Б</td>
-                                <td>IT2</td>
-                                <td>М</td>
-                            </tr>
-                            <tr class="addBetsValues hidden">
-                                <td>@(match.GetCof(BetType.HandicapHome)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.HandicapHome)?.AdditionalPoints ?? -1)</td>
-                                <td>@(match.GetCof(BetType.HandicapAway)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.TotalMore)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.TotalMore)?.AdditionalPoints ?? -1)</td>
-                                <td>@(match.GetCof(BetType.TotalLess)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITHomeMore)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITHomeMore)?.AdditionalPoints ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITHomeLess)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITAwayMore)?.Value ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITAwayMore)?.AdditionalPoints ?? -1)</td>
-                                <td>@(match.GetCof(BetType.ITAwayLess)?.Value ?? -1)</td>
-                            </tr>
-                            number++;
-                        }
-                    }
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>@Model.First().Line.Sport</h4>
         </div>
-
-        <hr />
-                        }
+        <div class="col-lg-6">
+            @Html.ActionLink("Games filter", "GamesFilterView", "Home", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+   
+    @Html.Partial("/Views/Partials/_pv_FilterResults.cshtml", Model);
+   
 </div>

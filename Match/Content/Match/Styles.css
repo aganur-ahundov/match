@@ -1,7 +1,7 @@
-﻿body {
+﻿/*body {
     margin: 0;
     padding: 0;
-}
+}*/
 
 tr.selected {
     background-color: #00A44C !important;
@@ -21,3 +21,13 @@ tr.addBetsValues {
  tr.addBetsValues td{
      border-bottom: 3px solid black;
  }
+
+
+.filter-selected-value
+{
+    color:red;
+}
+
+.star-empty{
+    color:black;
+}

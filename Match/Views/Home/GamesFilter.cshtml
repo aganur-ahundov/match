@@ -1,0 +1,30 @@
+﻿@model Match_BLL.Models.FilterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        @using (Ajax.BeginForm("SearchFilteredGames", "Home",
+                                        new AjaxOptions
+                                        {
+                                            HttpMethod = "POST",
+                                            InsertionMode = InsertionMode.Replace,
+                                            UpdateTargetId = "results",
+                                            OnComplete = "OnGameLineClick"
+                                        }))
+        {
+            @Html.TextBoxFor(model => model.Min, new { placeholder = "min" })
+            @Html.TextBoxFor(model => model.Max, new { placeholder = "max" })
+            @Html.EnumDropDownListFor(model => model.BetType, "All")
+            <button type="submit" class="btn btn-primary">Search</button>
+
+            <div id="results">  
+            </div>
+        }
+
+        <div class="container">
+        </div>
+    </div>
+</div>
